@@ -28,7 +28,7 @@ setup(
         'requests>=2.22.0',
         'six>=1.12.0',
         'sortedcontainers>=2.1.0',
-        'spacy>=2.1.4',
+        'spacy==2.3.2',
         'tqdm>=4.32.2',
         'urllib3>=1.25.3',
         'wasabi>=0.2.2',
