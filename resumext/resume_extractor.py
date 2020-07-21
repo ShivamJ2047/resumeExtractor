@@ -12,12 +12,10 @@ class ResumeExtractor(object):
         self,
         resume,
         skills_file=None,
-        custom_regex=None
     ):
         nlp = spacy.load('en_core_web_sm')
         custom_nlp = spacy.load(os.path.dirname(os.path.abspath(__file__)))
         self.__skills_file = skills_file
-        self.__custom_regex = custom_regex
         self.__matcher = Matcher(nlp.vocab)
         self.__details = {
             'name': None,
@@ -52,7 +50,7 @@ class ResumeExtractor(object):
                         )
         name = utils.extract_name(self.__nlp, matcher=self.__matcher)
         email = utils.extract_email(self.__text)
-        mobile = utils.extract_mobile_number(self.__text, self.__custom_regex)
+        mobile = utils.extract_mobile_number(self.__text)
         skills = utils.extract_skills(
                     self.__nlp,
                     self.__noun_chunks,
@@ -101,12 +99,16 @@ class ResumeExtractor(object):
             self.__details['company_names'] = cust_ent['Companies worked at']
         except KeyError:
             pass
+        try:
+            self.__details['experience'] = entities['experience']
+        except KeyError:
+            pass
         self.__details['no_of_pages'] = utils.get_number_of_pages(
                                             self.__resume
                                         )
         return
 
 
-def resumeExtractor(resume):
-    parser = ResumeExtractor(resume)
+def resumeExtractor(resume, skills_file=None):
+    parser = ResumeExtractor(resume, skills_file)
     return parser
