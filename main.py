@@ -35,7 +35,7 @@ while(option != 2):
 	try:
 		for each in tqdm(os.listdir(foldername)):
 			if each.endswith('.pdf') or each.endswith('.docx'):
-				data = resumeExtractor(foldername + '/' + each).get_extracted_data()
+				data = resumeExtractor(foldername + '/' + each, skills_file = 'resumext/skills.csv').get_extracted_data()
 				rows_list.append(data)
 			if each.endswith('.doc'):
 				try:
