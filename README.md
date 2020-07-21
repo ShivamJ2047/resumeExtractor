@@ -10,10 +10,20 @@ A resume informatation extraction tool
 * Designation
 * Company names  
 # Installation
-You can install all the dependencies using  
+1. You can install all the dependencies using  
 ```sh
 python setup.py install
 ```  
+2. For nlp operations install
+```sh
+# spaCy
+python -m spacy download en_core_web_sm
+
+# nltk
+python -m nltk.downloader words
+python -m nltk.downloader stopwords
+```
+3. Install tkinter before proceeding
 # Usage
 * You can start the app using
 ```sh
