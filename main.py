@@ -12,8 +12,6 @@ option = 1
 print('################## Welcome to Resume Extractor ##################')
 print('#################################################################')
 print('##################### Made by - Shivam Joshi ####################')
-print('#################################################################')
-print('##################### For NykinSky & Company ####################\n\n')
 while(option != 2):
 	print('Options - ')
 	print('1 - Choose the folder which contains all the resumes')
